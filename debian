@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Update Linux Mint
+sudo apt update
+sudo apt upgrade -y
+
+# Install Ansible
+sudo apt install ansible -y
