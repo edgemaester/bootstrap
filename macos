@@ -1,0 +1,111 @@
+#!/bin/bash
+
+# Check for Homebrew installation
+if test ! $(which brew)
+then
+    # Install Homebrew if not already installed
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Update Homebrew
+brew update
+
+# Install necessary tools using Homebrew
+brew install git
+brew install bash-completion2
+brew install vim
+brew install tmux
+brew install openssh
+brew install rsync
+brew install htop
+brew install iftop
+brew install mtr
+brew install wget
+brew install tree
+brew install python
+brew install openssl
+brew install node
+brew install golang
+brew install ffmpeg
+brew install pkg-config
+brew install gdbm
+brew install mysql-client
+brew install postgresql
+brew install libsodium
+brew install imagemagick
+brew install rbenv
+brew install yarn
+brew install gmp
+brew install coreutils
+brew install moreutils
+brew install findutils
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/openssh
+brew install homebrew/dupes/screen
+
+# Configure Terminal to enable bash-completion and other useful features
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
+# Configure macOS settings
+# Disable press-and-hold for accented characters
+defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Disable automatic capitalization
+defaults write -g NSAutomaticCapitalizationEnabled -bool false
+
+# Disable automatic period substitution
+defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable automatic quotes substitution
+defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
+
+# Set sidebar icon size to small
+defaults write -g NSTableViewDefaultSizeMode -int 1
+
+# Enable snap-to-grid for desktop icons
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+# Show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+# Set the default Finder view style
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Show all filename extensions
+defaults write -g AppleShowAllExtensions -bool true
+
+# Enable firewall
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+# Enable remote desktop
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -allUsers
+
+# Set up a file system to store system files and application data
+sudo mkdir /Applications/System
+sudo mv /Applications/Xcode.app /Applications/System/
+sudo mv /Applications/System Preferences.app /Applications/System/
+sudo mv /Applications/Utilities /Applications/System/
+sudo mv /Applications/Xcode /Applications/System/
+sudo mv /Applications/Unix /Applications/System/
+sudo mv /Applications/DevTools /Applications/System/
+sudo mv /Applications/Command Line Tools.app /Applications/System/
+sudo mv /Applications/Performance Toolkit.app /Applications/System/
+sudo mv /Applications/Profiler.app /Applications/System/
+sudo mv /Applications/Console.app /Applications/System/
+sudo mv /Applications/Network Link Conditioner.app /Applications/System/
+sudo mv /Applications/Automator.app /Applications/System/
+sudo mv /Applications/
+
+# Install Ansible
+sudo pip install ansible
+
+# Set up ansible configuration directory
+mkdir -p ~/.ansible
+
+# Set up ansible inventory file
+touch ~/.ansible/hosts
+
+# Set up ansible playbook directory
+mkdir -p ~/ansible/play
