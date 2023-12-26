@@ -1,11 +1,13 @@
 #!/bin/bash
 
 # Update Linux Mint
-apt update
-apt upgrade -y
+sudo apt update
+sudo apt upgrade -y
 
 # Install Ansible
-apt install ansible -y
+if ! [ -x "$(command -v ansible)" ]; then
+  sudo apt install ansible -y
+fi
 
 # Install Open SSH Server
-apt install openssh-server -y
+sudo apt install openssh-server -y
