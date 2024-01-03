@@ -9,3 +9,6 @@ apt install ansible -y
 
 # Install Open SSH Server
 apt install openssh-server -y
+
+# Install Git
+apt install git -y
