@@ -27,3 +27,16 @@ echo "Creating symbolic link for Installomator..."
 ln -s /usr/local/Installomator/Installomator.sh /usr/local/bin/installomator
 
 echo "Installation complete. Installomator has been installed and is accessible via the 'installomator' command."
+
+echo "--------------------------------"
+# List of apps to install using Installomator labels
+apps=("zoom" "vlc")
+
+# Loop through each app and install it
+for app in "${apps[@]}"
+do
+    echo "Installing $app..."
+    sudo installomator $app
+done
+
+echo "All applications have been installed."
